@@ -71,9 +71,13 @@ Funcionalidades previstas:
 ## Estrutura do repositório
 
 ```
-projeto1/
+.
 ├── docs/                    # enunciado e material de apoio
 ├── relatorio/               # relatórios das etapas (Markdown + PDF)
+├── .gitattributes
 ├── .gitignore
 └── README.md
 ```
+
+O código-fonte, o `Makefile` e a pasta `assets/` entram na raiz durante a
+Etapa 2.
