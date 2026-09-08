@@ -1,0 +1,12 @@
+# Normaliza fim de linha entre Windows e WSL/Linux
+* text=auto eol=lf
+
+*.c    text eol=lf
+*.h    text eol=lf
+*.md   text eol=lf
+Makefile text eol=lf
+
+*.png  binary
+*.jpg  binary
+*.pdf  binary
+*.ttf  binary

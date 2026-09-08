@@ -1,0 +1,29 @@
+# Artefatos do processo de compilacao (Tabela 3 do enunciado: -1,0 ponto)
+build/
+bin/
+obj/
+*.o
+*.obj
+*.exe
+*.out
+*.d
+
+# Bibliotecas baixadas (SDL3 devel-mingw) - nao versionadas
+libs/
+*.dll
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+
+# Saida do programa
+output_image.png
+
+# Editor / SO
+.vscode/ipch/
+.cache/
+compile_commands.json
+Thumbs.db
+desktop.ini
+.DS_Store
