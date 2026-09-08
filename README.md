@@ -9,6 +9,7 @@ Presbiteriana Mackenzie, 2026.2.
 | Nome completo | RA |
 |---|---|
 | João Guilherme Messias de Oliveira Santos | 10426110 |
+| Luis Felipe Cunha | 10419514 |
 
 ## O que é o projeto
 
@@ -53,7 +54,6 @@ Funcionalidades previstas:
 | SDL | SDL3 | 3.4.16 |
 | SDL_image | SDL3_image | 3.4.6 |
 | SDL_ttf | SDL3_ttf | 3.2.2 |
-| Validação secundária | WSL Ubuntu 26.04 + gcc | 15.2.0 |
 
 ## Compilação e execução
 
@@ -65,7 +65,8 @@ Funcionalidades previstas:
 
 | Integrante | Contribuição |
 |---|---|
-| João Guilherme Messias de Oliveira Santos | Levantamento de versões das bibliotecas, definição do processo de build e redação do relatório da Etapa 1. |
+| João Guilherme Messias de Oliveira Santos | Leitura do enunciado, levantamento das versões das bibliotecas e redação do relatório da Etapa 1. |
+| Luis Felipe Cunha | Leitura do enunciado, definição do processo de build e revisão do relatório da Etapa 1. |
 
 ## Estrutura do repositório
 
