@@ -71,7 +71,13 @@ reversível, alternância de resolução, salvar com `S` e textos via SDL_ttf).
 
 ## Compilação e execução
 
-### 1. Pré-requisitos
+O `Makefile` detecta automaticamente se está rodando no Windows ou no
+Linux/WSL (variável `$(OS)` do make) e ajusta comandos de shell e a forma de
+localizar a SDL3 de acordo. As instruções abaixo cobrem os dois casos.
+
+### Windows
+
+#### 1. Pré-requisitos
 
 - **gcc** via MinGW-w64 (toolchain UCRT), com `gcc` e `mingw32-make` no `PATH`.
   Verifique com:
@@ -82,7 +88,7 @@ reversível, alternância de resolução, salvar com `S` e textos via SDL_ttf).
   Se não tiver, instale o [WinLibs UCRT](https://winlibs.com/) (runtime UCRT,
   threads POSIX, exceções SEH) e adicione a pasta `bin` ao `PATH`.
 
-### 2. Bibliotecas SDL3 (não versionadas no repositório)
+#### 2. Bibliotecas SDL3 (não versionadas no repositório)
 
 O `Makefile` espera as bibliotecas extraídas em `libs/`, nos caminhos:
 
@@ -103,9 +109,9 @@ cada zip já preserva essa estrutura):
 Se usar uma versão diferente das listadas acima, ajuste as variáveis
 `SDL3_DIR`, `SDL3_IMAGE_DIR` e `SDL3_TTF_DIR` no topo do `Makefile`.
 
-### 3. Compilar
+#### 3. Compilar
 
-Na raiz do repositório:
+Na raiz do repositório, em qualquer terminal (PowerShell, cmd ou Git Bash):
 
 ```
 mingw32-make
@@ -117,17 +123,18 @@ Isso compila os `.c` de `src/` para `build/*.o`, linka o executável em
 `build/`, porque no Windows as DLLs precisam estar junto do executável e o
 programa procura a fonte por caminho relativo ao próprio executável.
 
-### 4. Executar
+#### 4. Executar
 
 ```
 cd build
-./proj1.exe caminho_da_imagem.ext
+proj1.exe caminho_da_imagem.ext
 ```
 
 Pressione `S` com a janela principal em foco para salvar a imagem
-atualmente exibida em `build/output_image.png`.
+atualmente exibida em `build/output_image.png`, `E` para equalizar/reverter
+e `R` para alternar a resolução (atalhos equivalentes aos botões).
 
-### 5. Limpar
+#### 5. Limpar
 
 ```
 mingw32-make clean
@@ -135,6 +142,57 @@ mingw32-make clean
 
 Remove a pasta `build/` inteira (objetos, executável, DLLs copiadas e a
 cópia da fonte).
+
+### Linux / WSL (Ubuntu)
+
+O enunciado informa que o projeto também será compilado no WSL Ubuntu com
+gcc 15.2.0. Nesse caso o `Makefile` não usa os pacotes `devel-mingw` (são
+específicos do Windows) — ele procura a SDL3/SDL3_image/SDL3_ttf já
+**instaladas no sistema**, via `pkg-config`.
+
+> **Atenção:** este caminho não pôde ser testado de ponta a ponta durante o
+> desenvolvimento (ambiente de desenvolvimento é Windows, sem WSL instalado —
+> ver relatório da Etapa 1, seção 4). Ele foi escrito para seguir o padrão de
+> instalação oficial da SDL3 em Linux, mas **precisa ser validado em uma
+> máquina Ubuntu real antes da entrega**, idealmente pelo grupo.
+
+1. Instalar dependências de build:
+   ```
+   sudo apt update
+   sudo apt install build-essential cmake git pkg-config libx11-dev \
+       libxext-dev libwayland-dev libxrandr-dev libxi-dev
+   ```
+2. Compilar e instalar a SDL3, SDL3_image e SDL3_ttf a partir do código-fonte
+   oficial (repita para cada uma das três, na mesma ordem — `SDL_image` e
+   `SDL_ttf` dependem da `SDL` já instalada):
+   ```
+   git clone --branch release-3.4.16 https://github.com/libsdl-org/SDL.git
+   cmake -S SDL -B SDL/build -DCMAKE_BUILD_TYPE=Release
+   cmake --build SDL/build --parallel
+   sudo cmake --install SDL/build
+
+   git clone --branch release-3.4.6 https://github.com/libsdl-org/SDL_image.git
+   cmake -S SDL_image -B SDL_image/build -DCMAKE_BUILD_TYPE=Release
+   cmake --build SDL_image/build --parallel
+   sudo cmake --install SDL_image/build
+
+   git clone --branch release-3.2.2 https://github.com/libsdl-org/SDL_ttf.git
+   cmake -S SDL_ttf -B SDL_ttf/build -DCMAKE_BUILD_TYPE=Release
+   cmake --build SDL_ttf/build --parallel
+   sudo cmake --install SDL_ttf/build
+
+   sudo ldconfig
+   ```
+3. Confirmar que o `pkg-config` encontra as três bibliotecas:
+   ```
+   pkg-config --modversion sdl3 SDL3_image SDL3_ttf
+   ```
+4. Compilar e executar o projeto normalmente:
+   ```
+   make
+   cd build
+   ./proj1.exe caminho_da_imagem.ext
+   ```
 
 ## Contribuições
 

@@ -304,11 +304,19 @@ conforme registrado na seção 8. Antes da entrega final, ficam pendentes:
    atualizam a tela; `S` salva o arquivo esperado; os atalhos `E` e `R`
    funcionam. Este teste foi realizado pelo integrante responsável antes da
    entrega final.
-2. **Limiares de classificação de brilho/contraste, tamanho da janela
+2. **Validação da compilação no WSL Ubuntu com gcc 15.2.0.** O ambiente de
+   desenvolvimento do grupo é Windows (seção 4 da Etapa 1), sem WSL
+   instalado, então o caminho de build para Linux (`Makefile` usando
+   `pkg-config` para localizar a SDL3 instalada no sistema, em vez dos
+   pacotes `devel-mingw` usados no Windows) não pôde ser testado de ponta a
+   ponta. Está documentado no `README.md` e segue o processo oficial de
+   instalação da SDL3 em Linux, mas o grupo recomenda compilar numa máquina
+   Ubuntu real (ou WSL) antes da entrega para confirmar.
+3. **Limiares de classificação de brilho/contraste, tamanho da janela
    secundária (360x420) e tons exatos de azul dos botões** foram decisões
    de projeto tomadas durante a implementação (documentadas nos comentários
    do código-fonte e no `README.md`).
-3. **Revisão de código**, para que a nota reflita entendimento real do
+4. **Revisão de código**, para que a nota reflita entendimento real do
    conteúdo da disciplina, não apenas aceitação do código pronto.
 
 ---
