@@ -1,6 +1,6 @@
-# Projeto 1 — Processamento de Imagens em C com SDL3
+# Projeto 1 - Processamento de Imagens em C com SDL3
 
-Projeto da disciplina de **Computação Visual** (Prof. André Kishimoto) —
+Projeto da disciplina de **Computação Visual** (Prof. André Kishimoto),
 Ciência da Computação, Faculdade de Computação e Informática, Universidade
 Presbiteriana Mackenzie, 2026.2.
 
@@ -42,7 +42,7 @@ Funcionalidades implementadas:
 
 ## Estado atual
 
-**Etapa 2 — Análise final e implementação.** O programa está implementado em
+**Etapa 2, análise final e implementação.** O programa está implementado em
 C/SDL3, com as 8 funcionalidades obrigatórias do enunciado (carregamento,
 escala de cinza, duas janelas, histograma com análise, equalização
 reversível, alternância de resolução, salvar com `S` e textos via SDL_ttf).
@@ -56,8 +56,8 @@ reversível, alternância de resolução, salvar com `S` e textos via SDL_ttf).
 | Item | Configuração | Versão |
 |---|---|---|
 | Sistema operacional | Windows 11 Pro | 10.0.26200 |
-| Compilador | gcc — MinGW-w64 UCRT-posix-seh | 14.2.0 |
-| Build | mingw32-make | — |
+| Compilador | gcc (MinGW-w64 UCRT-posix-seh) | 14.2.0 |
+| Build | mingw32-make | n/a |
 | SDL | SDL3 | 3.4.16 |
 | SDL_image | SDL3_image | 3.4.6 |
 | SDL_ttf | SDL3_ttf | 3.2.2 |
@@ -65,7 +65,7 @@ reversível, alternância de resolução, salvar com `S` e textos via SDL_ttf).
 > A versão do gcc usada para o desenvolvimento (14.2.0) é anterior à 15.1.0
 > citada no enunciado como a versão de compilação na correção. O `Makefile`
 > fixa `-std=c17` e compila com `-Wall -Wextra` sem avisos, o que reduz o
-> risco de incompatibilidade — mas vale recompilar com o gcc 15.x antes da
+> risco de incompatibilidade, mas vale recompilar com o gcc 15.x antes da
 > entrega para confirmar. Ver seção "Problemas encontrados" do
 > [relatório da Etapa 2](relatorio/RELATORIO_ETAPA2.md).
 
@@ -146,15 +146,15 @@ cópia da fonte).
 ### Linux / WSL (Ubuntu)
 
 O enunciado informa que o projeto também será compilado no WSL Ubuntu com
-gcc 15.2.0. Nesse caso o `Makefile` não usa os pacotes `devel-mingw` (são
-específicos do Windows) — ele procura a SDL3/SDL3_image/SDL3_ttf já
-**instaladas no sistema**, via `pkg-config`.
+gcc 15.2.0. Nesse caso o `Makefile` não usa os pacotes `devel-mingw`, que
+são específicos do Windows: ele procura a SDL3/SDL3_image/SDL3_ttf já
+instaladas no sistema, via `pkg-config`.
 
 > **Atenção:** este caminho não pôde ser testado de ponta a ponta durante o
-> desenvolvimento (ambiente de desenvolvimento é Windows, sem WSL instalado —
-> ver relatório da Etapa 1, seção 4). Ele foi escrito para seguir o padrão de
-> instalação oficial da SDL3 em Linux, mas **precisa ser validado em uma
-> máquina Ubuntu real antes da entrega**, idealmente pelo grupo.
+> desenvolvimento, já que o ambiente de desenvolvimento é Windows, sem WSL
+> instalado (ver relatório da Etapa 1, seção 4). Ele foi escrito seguindo o
+> padrão de instalação oficial da SDL3 em Linux, mas precisa ser validado
+> numa máquina Ubuntu real antes da entrega, idealmente pelo grupo.
 
 1. Instalar dependências de build:
    ```
@@ -163,8 +163,8 @@ específicos do Windows) — ele procura a SDL3/SDL3_image/SDL3_ttf já
        libxext-dev libwayland-dev libxrandr-dev libxi-dev
    ```
 2. Compilar e instalar a SDL3, SDL3_image e SDL3_ttf a partir do código-fonte
-   oficial (repita para cada uma das três, na mesma ordem — `SDL_image` e
-   `SDL_ttf` dependem da `SDL` já instalada):
+   oficial, repetindo para cada uma das três na mesma ordem, já que
+   `SDL_image` e `SDL_ttf` dependem da `SDL` já instalada:
    ```
    git clone --branch release-3.4.16 https://github.com/libsdl-org/SDL.git
    cmake -S SDL -B SDL/build -DCMAKE_BUILD_TYPE=Release
@@ -198,7 +198,7 @@ específicos do Windows) — ele procura a SDL3/SDL3_image/SDL3_ttf já
 
 | Integrante | Contribuição |
 |---|---|
-| João Guilherme Messias de Oliveira Santos | Leitura do enunciado, levantamento das versões das bibliotecas, redação do relatório da Etapa 1; condução completa da Etapa 2 — implementação em C/SDL3 (carregamento, escala de cinza, histograma, equalização, janelas, botões, atalhos de teclado, Makefile), testes de compilação/execução, documentação e relatório final. |
+| João Guilherme Messias de Oliveira Santos | Leitura do enunciado, levantamento das versões das bibliotecas, redação do relatório da Etapa 1; condução completa da Etapa 2, incluindo implementação em C/SDL3 (carregamento, escala de cinza, histograma, equalização, janelas, botões, atalhos de teclado, Makefile), testes de compilação/execução, documentação e relatório final. |
 | Luis Felipe Cunha | Leitura do enunciado, definição do processo de build e revisão do relatório da Etapa 1; colaborador do repositório, com acesso para revisar o código e a documentação da Etapa 2. |
 
 ## Estrutura do repositório
@@ -223,4 +223,4 @@ específicos do Windows) — ele procura a SDL3/SDL3_image/SDL3_ttf já
 ```
 
 `libs/` (bibliotecas SDL3 baixadas) e `build/` (artefatos de compilação) não
-são versionados — ver seção "Compilação e execução".
+são versionados, ver seção "Compilação e execução".
