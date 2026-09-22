@@ -1,5 +1,5 @@
 # Projeto 1 - Processamento de Imagens em C com SDL3
-# Compilado e testado com gcc (MinGW-w64, UCRT) no Windows.
+# Compilado e testado com gcc (MinGW-w64, UCRT) no Windows e gcc no WSL Ubuntu.
 
 CC := gcc
 STD := -std=c17
@@ -20,7 +20,26 @@ OBJS := $(patsubst $(SRC_DIR)/%.c,$(BUILD_DIR)/%.o,$(SRCS))
 
 TARGET := $(BUILD_DIR)/proj1.exe
 
-DLLS := $(SDL3_DIR)/bin/SDL3.dll $(SDL3_IMAGE_DIR)/bin/SDL3_image.dll $(SDL3_TTF_DIR)/bin/SDL3_ttf.dll
+SDL3_DLL := $(SDL3_DIR)/bin/SDL3.dll
+SDL3_IMAGE_DLL := $(SDL3_IMAGE_DIR)/bin/SDL3_image.dll
+SDL3_TTF_DLL := $(SDL3_TTF_DIR)/bin/SDL3_ttf.dll
+
+# Comandos de shell diferem entre Windows (cmd.exe) e Linux/WSL (sh).
+# $(OS) so existe no Windows; forcamos cmd.exe la para nao depender de
+# encontrar (ou nao) um sh.exe no PATH (ex. Git Bash) em cada maquina.
+ifeq ($(OS),Windows_NT)
+SHELL := cmd.exe
+.SHELLFLAGS := /C
+MKDIR_P = if not exist "$1" mkdir "$1"
+RM_RF = if exist "$1" rmdir /s /q "$1"
+COPY = copy /Y "$(subst /,\,$1)" "$(subst /,\,$2)" >nul
+RUN_CMD = cd $(BUILD_DIR) && proj1.exe
+else
+MKDIR_P = mkdir -p "$1"
+RM_RF = rm -rf "$1"
+COPY = cp -f "$1" "$2"
+RUN_CMD = cd $(BUILD_DIR) && ./proj1.exe
+endif
 
 .PHONY: all clean run dlls assets
 
@@ -33,17 +52,19 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 	$(CC) $(STD) $(WARN) $(INCLUDES) -c $< -o $@
 
 $(BUILD_DIR):
-	mkdir -p $(BUILD_DIR)
+	$(call MKDIR_P,$(BUILD_DIR))
 
 dlls: | $(BUILD_DIR)
-	cp -u $(DLLS) $(BUILD_DIR)/
+	$(call COPY,$(SDL3_DLL),$(BUILD_DIR)/)
+	$(call COPY,$(SDL3_IMAGE_DLL),$(BUILD_DIR)/)
+	$(call COPY,$(SDL3_TTF_DLL),$(BUILD_DIR)/)
 
 assets: | $(BUILD_DIR)
-	mkdir -p $(BUILD_DIR)/assets/fonts
-	cp -u assets/fonts/DejaVuSans.ttf $(BUILD_DIR)/assets/fonts/
+	$(call MKDIR_P,$(BUILD_DIR)/assets/fonts)
+	$(call COPY,assets/fonts/DejaVuSans.ttf,$(BUILD_DIR)/assets/fonts/)
 
 run: all
-	cd $(BUILD_DIR) && ./proj1.exe
+	$(RUN_CMD)
 
 clean:
-	rm -rf $(BUILD_DIR)
+	$(call RM_RF,$(BUILD_DIR))
