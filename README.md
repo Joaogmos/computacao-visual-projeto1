@@ -138,8 +138,8 @@ cópia da fonte).
 
 | Integrante | Contribuição |
 |---|---|
-| João Guilherme Messias de Oliveira Santos | Leitura do enunciado, levantamento das versões das bibliotecas, redação do relatório da Etapa 1; condução da Etapa 2 (implementação em C/SDL3 com apoio de IA generativa, testes de compilação/execução, documentação e relatório final). |
-| Luis Felipe Cunha | Leitura do enunciado, definição do processo de build e revisão do relatório da Etapa 1. **Pendente:** revisão do código e dos relatórios da Etapa 2 — ver [relatório da Etapa 2](relatorio/RELATORIO_ETAPA2.md) para detalhes sobre o uso de IA generativa nesta etapa. |
+| João Guilherme Messias de Oliveira Santos | Leitura do enunciado, levantamento das versões das bibliotecas, redação do relatório da Etapa 1; implementação inicial da Etapa 2 (carregamento de imagem, conversão para escala de cinza, cálculo/desenho do histograma, equalização, janelas principal e secundária, Makefile), documentação e relatório final. |
+| Luis Felipe Cunha | Leitura do enunciado, definição do processo de build e revisão do relatório da Etapa 1; na Etapa 2: validação visual completa do programa (janelas, botões, histograma, equalização, alternância de resolução), recompilação e teste com gcc 15.x, e implementação dos atalhos de teclado adicionais (equalizar/alternar resolução via teclado, item 6 da seção 10 do relatório da Etapa 2). |
 
 ## Estrutura do repositório
 

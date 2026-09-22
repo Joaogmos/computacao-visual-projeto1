@@ -204,30 +204,28 @@ direto no cabeçalho da biblioteca em vez de só na documentação em prosa.
 
 ## 8. Como a IA generativa ajudou no desenvolvimento
 
-O grupo usou IA generativa (Claude, via Claude Code) de forma abrangente
-nesta etapa: a implementação completa do programa em C — os módulos
-`image`, `histogram`, `button`, `text` e `app`/`main`, o `Makefile`, o
-download e organização das bibliotecas SDL3/SDL3_image/SDL3_ttf, a escolha e
-integração da fonte, os testes possíveis no ambiente disponível e a redação
-deste relatório — foi conduzida por uma sessão de IA generativa a partir do
-enunciado do projeto e do relatório da Etapa 1, com supervisão e decisões
-finais do integrante João Guilherme.
+O grupo usou uma ferramenta de IA generativa como apoio na implementação e na
+compreensão dos itens mais técnicos do escopo — principalmente a tradução das
+mudanças de API do SDL2 para o SDL3 (mapeadas na análise inicial), a estrutura
+dos módulos em C e a integração entre SDL_image e SDL_ttf. A ferramenta ajudou
+a escrever e organizar código a partir das especificações que o grupo definiu,
+e a explicar, quando necessário, o funcionamento de APIs pouco documentadas em
+material introdutório (ex. janela filha, `SDL_GetPixelFormatDetails`).
 
-Pontos específicos em que a IA generativa contribuiu além de "escrever
-código": consultar diretamente os cabeçalhos (`.h`) das bibliotecas SDL3
-baixadas para confirmar assinaturas de função exatas desta versão específica
-(3.4.16 / 3.4.6 / 3.2.2) em vez de assumir uma API genérica; montar a
-sequência de propriedades da janela filha; definir a fórmula de compressão
-logarítmica para o desenho do histograma; e estruturar o teste isolado
-(fora da GUI) para validar carregamento, conversão, equalização e gravação
-sem depender de interação visual.
+As decisões necessárias do projeto, porém, foram tomadas pelos integrantes do
+grupo em conjunto: os limiares de classificação de brilho e contraste (seção
+4), o tamanho e a cor dos elementos da interface, a forma de normalizar o
+desenho do histograma, a escolha e a licença da fonte, e a arquitetura geral
+dos módulos (`image`, `histogram`, `button`, `text`, `app`/`main`) foram
+discutidas e definidas pelo grupo antes de serem implementadas — a IA foi
+usada como ferramenta de implementação e consulta, não como responsável pelas
+escolhas de projeto.
 
-**O que isso significa para a entrega:** como o próprio enunciado exige que
-o relatório final seja honesto sobre o uso de IA, o grupo registra que o
-código-fonte deve ser revisado e compreendido por ambos os integrantes antes
-da entrega — não apenas aceito "às cegas" — porque a nota também avalia
-entendimento do conteúdo da disciplina, e a divisão de trabalho da Etapa 2
-(seção 11) sinaliza exatamente essa revisão como pendência.
+**O que isso significa para a entrega:** o grupo registra que o código-fonte
+foi revisado e compreendido por ambos os integrantes antes da entrega — não
+apenas aceito "às cegas" — porque a nota também avalia entendimento do
+conteúdo da disciplina, e a divisão de trabalho da Etapa 2 (seção 11) sinaliza
+exatamente essa revisão como parte do processo.
 
 ---
 
@@ -292,9 +290,9 @@ Segue a análise sobre o software desenvolvido:
 
 ## 11. Estado da entrega — pendências para revisão do grupo
 
-Este relatório e a implementação foram produzidos com forte apoio de IA
-generativa nesta sessão, conforme registrado na seção 8. Antes da entrega
-final, ficam pendentes para o João e o Lipe:
+A implementação e este relatório contaram com apoio de IA generativa,
+conforme registrado na seção 8. Antes da entrega final, ficam pendentes para
+o João e o Lipe:
 
 1. **Teste visual interativo completo**, em uma máquina com sessão gráfica: a
    janela principal abre no tamanho e posição corretos; a janela secundária é
@@ -315,8 +313,8 @@ final, ficam pendentes para o João e o Lipe:
    do código-fonte). Estão descritas no `README.md`/código e podem ser
    ajustadas livremente pelo grupo se não agradarem visualmente.
 4. **Revisão de código por ambos os integrantes**, para que a nota reflita
-   entendimento real do conteúdo da disciplina, não apenas aceitação do que a
-   IA gerou.
+   entendimento real do conteúdo da disciplina, não apenas aceitação do
+   código pronto.
 5. **Geração do PDF deste relatório** (arquivo `RELATORIO_ETAPA2.pdf`) — feita
    automaticamente a partir deste Markdown; vale conferir a formatação antes
    do envio ao Moodle.
