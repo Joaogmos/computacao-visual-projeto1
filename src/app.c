@@ -196,6 +196,10 @@ void app_handle_event(AppState *app, const SDL_Event *event) {
         case SDL_EVENT_KEY_DOWN:
             if (event->key.key == SDLK_S) {
                 save_current_image(app);
+            } else if (event->key.key == SDLK_E) {
+                handle_button_click(app, &app->equalize_button);
+            } else if (event->key.key == SDLK_R) {
+                handle_button_click(app, &app->resolution_button);
             }
             break;
 
