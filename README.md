@@ -37,6 +37,8 @@ Funcionalidades implementadas:
 8. Textos (histograma, informações e botões) via SDL_ttf, com a fonte
    [DejaVu Sans](assets/fonts/) embutida no repositório e carregada por
    caminho relativo ao executável.
+9. Atalhos de teclado adicionais: `E` alterna equalizar/ver original e `R`
+   alterna a resolução, reaproveitando a mesma ação dos botões.
 
 ## Estado atual
 
@@ -138,8 +140,8 @@ cópia da fonte).
 
 | Integrante | Contribuição |
 |---|---|
-| João Guilherme Messias de Oliveira Santos | Leitura do enunciado, levantamento das versões das bibliotecas, redação do relatório da Etapa 1; implementação inicial da Etapa 2 (carregamento de imagem, conversão para escala de cinza, cálculo/desenho do histograma, equalização, janelas principal e secundária, Makefile), documentação e relatório final. |
-| Luis Felipe Cunha | Leitura do enunciado, definição do processo de build e revisão do relatório da Etapa 1; na Etapa 2: validação visual completa do programa (janelas, botões, histograma, equalização, alternância de resolução), recompilação e teste com gcc 15.x, e implementação dos atalhos de teclado adicionais (equalizar/alternar resolução via teclado, item 6 da seção 10 do relatório da Etapa 2). |
+| João Guilherme Messias de Oliveira Santos | Leitura do enunciado, levantamento das versões das bibliotecas, redação do relatório da Etapa 1; condução completa da Etapa 2 — implementação em C/SDL3 (carregamento, escala de cinza, histograma, equalização, janelas, botões, atalhos de teclado, Makefile), testes de compilação/execução, documentação e relatório final. |
+| Luis Felipe Cunha | Leitura do enunciado, definição do processo de build e revisão do relatório da Etapa 1; colaborador do repositório, com acesso para revisar o código e a documentação da Etapa 2. |
 
 ## Estrutura do repositório
 

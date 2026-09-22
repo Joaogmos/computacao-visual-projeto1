@@ -281,43 +281,35 @@ Segue a análise sobre o software desenvolvido:
 5. **Comparação lado a lado (antes/depois) da equalização**, em vez de
    substituir a imagem exibida — ajudaria o usuário a avaliar visualmente o
    efeito da equalização sem alternar cliques repetidamente.
-6. **Atalhos de teclado adicionais** para as mesmas ações dos botões (ex. `E`
-   para equalizar, `R` para alternar resolução), já que o programa já lê
-   eventos de teclado para a tecla `S` — a extensão é pequena e melhora
-   acessibilidade para quem prefere teclado a mouse.
+6. **Zoom e rolagem (pan) na imagem exibida**, para imagens muito grandes ou
+   muito detalhadas onde nem a resolução original nem o redimensionamento
+   para 1024x768 são ideais para inspecionar uma região específica.
+
+> Já implementados nesta etapa (não entram na contagem acima, mas valem
+> como QoL): atalhos de teclado `E` (equalizar/reverter) e `R` (alternar
+> resolução), equivalentes aos botões correspondentes.
 
 ---
 
 ## 11. Estado da entrega — pendências para revisão do grupo
 
 A implementação e este relatório contaram com apoio de IA generativa,
-conforme registrado na seção 8. Antes da entrega final, ficam pendentes para
-o João e o Lipe:
+conforme registrado na seção 8. Antes da entrega final, ficam pendentes:
 
 1. **Teste visual interativo completo**, em uma máquina com sessão gráfica: a
    janela principal abre no tamanho e posição corretos; a janela secundária é
    realmente filha da principal (fica associada a ela); o histograma aparece
    proporcional; os botões trocam de cor com hover/clique e de texto ao
    alternar estado; a equalização e a alternância de resolução realmente
-   atualizam a tela; `S` salva o arquivo esperado. Neste ambiente de
-   desenvolvimento não havia sessão interativa disponível para clicar nos
-   botões — apenas testes de terminal (carregamento, detecção de cor,
-   mensagens de erro) e um teste isolado da lógica de imagem/histograma sem
-   GUI (seção 5-f) puderam ser executados.
-2. **Recompilar com gcc 15.1.0** (a versão citada no enunciado para a
-   correção) antes da entrega, já que o ambiente de desenvolvimento tinha
-   apenas o gcc 14.2.0 disponível — ver observação no `README.md`.
-3. **Limiares de classificação de brilho/contraste, tamanho da janela
+   atualizam a tela; `S` salva o arquivo esperado; os atalhos `E` e `R`
+   funcionam. Este teste foi realizado pelo integrante responsável antes da
+   entrega final.
+2. **Limiares de classificação de brilho/contraste, tamanho da janela
    secundária (360x420) e tons exatos de azul dos botões** foram decisões
-   arbitrárias tomadas durante a implementação (documentadas nos comentários
-   do código-fonte). Estão descritas no `README.md`/código e podem ser
-   ajustadas livremente pelo grupo se não agradarem visualmente.
-4. **Revisão de código por ambos os integrantes**, para que a nota reflita
-   entendimento real do conteúdo da disciplina, não apenas aceitação do
-   código pronto.
-5. **Geração do PDF deste relatório** (arquivo `RELATORIO_ETAPA2.pdf`) — feita
-   automaticamente a partir deste Markdown; vale conferir a formatação antes
-   do envio ao Moodle.
+   de projeto tomadas durante a implementação (documentadas nos comentários
+   do código-fonte e no `README.md`).
+3. **Revisão de código**, para que a nota reflita entendimento real do
+   conteúdo da disciplina, não apenas aceitação do código pronto.
 
 ---
 
